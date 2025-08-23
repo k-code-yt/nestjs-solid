@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { User } from '../../entities/user.entity';
+import { TypeOrmUser } from '../../entities/user.entity';
 
 // ###VIOLATIONS###
 // ----Multiple Reasons to Change---
@@ -17,8 +17,8 @@ export class AuthService {
   constructor(
     // What if we change schema?
     // What if we change DB to Mongo?
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
+    @InjectRepository(TypeOrmUser)
+    private userRepository: Repository<TypeOrmUser>,
     // What if we will use other token service?
     private jwtService: JwtService,
   ) {}

@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '../../entities/user.entity';
+import { TypeOrmUser } from '../../entities/user.entity';
 
 @Injectable()
 export class TokenService {
   constructor(private jwtService: JwtService) {}
 
-  generateAccessToken(user: User): string {
+  generateAccessToken(user: TypeOrmUser): string {
     const payload = {
       sub: user.id,
       email: user.email,
